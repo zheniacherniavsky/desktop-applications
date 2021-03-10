@@ -45,7 +45,7 @@ namespace lab2
 
         public Producer producer = new Producer();
 
-        public void Show()
+        public virtual void Show()
         {
             Console.WriteLine(Name);
             Console.WriteLine(Number);

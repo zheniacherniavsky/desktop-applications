@@ -16,13 +16,12 @@ namespace lab2
     
     class OrderBuilder : IBuilder
     {
-        public Product BuildOrder(object where, Settings option = Settings.None)
+        public Product BuildOrder(object @where, Settings option = Settings.None)
         {
-
             MainWindow m = (MainWindow)(where as Button)?.Parent;
             Product product = new Product();
 
-            switch(option)
+            switch (option)
             {
                 case Settings.None:
                     {

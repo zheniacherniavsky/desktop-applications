@@ -8,11 +8,28 @@ namespace lab2
 {
     public partial class MainWindow : Form
     {
+        private const bool DEBUG = true;
         public MainWindow()
         {
             Singleton settingSingleton = Singleton.GetInstance();
             this.BackColor = settingSingleton.Color;
             this.ForeColor = settingSingleton.ForeColor;
+
+            if (DEBUG)
+            {
+                // Prototype
+                Product p = new Product();
+                p.Name = "Hello world";
+                Prototype newP = p.Clone();
+                p.Name = "Reference";
+                (newP as Product)?.Show();
+
+                // Adapter
+                Adapter a = new Adapter();
+                a.Name = "Hello";
+                a.Show();
+            }
+
             InitializeComponent();
         }
 
@@ -33,7 +50,6 @@ namespace lab2
                 foreach (var error in results)
                 {
                     text += error.ErrorMessage + '\n';
-
                 }
                 MessageBox.Show(text, "Ошибка при добавлении товара");
             }
@@ -60,25 +76,20 @@ namespace lab2
             if (newProduct)
             {
                 Product.ProductsList.Add(product);
-                updateStateLine("Добавление");
+                UpdateStateLine("Добавление");
             }
             outputBox.Text = Product.getInfo();
         }
 
-        private void updateStateLine(string operation)
+        public void UpdateStateLine(string operation)
         {
             stateLine.Text = $"Строка состояния: Кол-во элементов: {Product.ProductsList.Count}. Последняя операция: {operation} [{DateTime.Now}]";
         }
 
         private void saveData_Click(object sender, EventArgs e)
         {
-            if(Product.ProductsList.Count != 0)
-            {
-                DataSerialization.Serialize(Product.ProductsList.ToArray(), "base.xml");
-                updateStateLine("Сохранение");
-                MessageBox.Show($"Успех. Кол-во товара: {Product.ProductsList.Count}", "Товар Сохранён");
-            }
-            else MessageBox.Show($"Товар не сохранён. Кол-во товара: {Product.ProductsList.Count}", "Ошибка");
+            Command.SaveResult();
+            UpdateStateLine("Сохранение");
         }
 
         private void loadData_Click(object sender, EventArgs e)
@@ -95,30 +106,22 @@ namespace lab2
                     Product.ProductsList.Add(prod);
                 }
                 outputBox.Text = Product.getInfo();
-                updateStateLine("Загрузка");
+                UpdateStateLine("Загрузка");
                 MessageBox.Show($"Товар был загружен.\nНовое количество товара: {Product.ProductsList.Count}", "Успех!");
             }
             else MessageBox.Show($"Не удалось загрузить товар. Скорее всего у вас нет файла с сохранением!");
         }
 
-        private void aboutProgram_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Разработчик: Жека\nВерсия: 1.0.0", "О программе");
-        }
-
-        private void поискToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SearchForm search = new SearchForm();
-            search.Show();
-        }
-
+        private void aboutProgram_Click(object sender, EventArgs e) => Command.AboutAuthor();
+        private void поискToolStripMenuItem_Click(object sender, EventArgs e) => Command.ShowSearchForm();
         private void поСтранеToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var sortedByCountry = from el in Product.ProductsList
                                   orderby el.producer.Country
                                   select el;
 
-            UpdateList(sortedByCountry);
+            Command.UpdateList(sortedByCountry);
+            outputBox.Text = Product.getInfo();
         }
 
         private void поДатеToolStripMenuItem_Click(object sender, EventArgs e)
@@ -127,8 +130,8 @@ namespace lab2
                                orderby DateTime.Parse(el.Date) descending
                                select el;
 
-            UpdateList(sortedByDate);
-
+            Command.UpdateList(sortedByDate);
+            outputBox.Text = Product.getInfo();
         }
 
         private void поНазваниюТовараToolStripMenuItem_Click(object sender, EventArgs e)
@@ -137,43 +140,21 @@ namespace lab2
                                orderby el.Name
                                select el;
 
-            UpdateList(sortedByName);
+            Command.UpdateList(sortedByName);
+            outputBox.Text = Product.getInfo();
         }
 
         private void поДатеотМКБToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var sortedByDate = from el in Product.ProductsList
-                               orderby DateTime.Parse(el.Date) ascending
-                               select el;
+                orderby DateTime.Parse(el.Date) ascending
+                select el;
 
-            UpdateList(sortedByDate);
-        }
-
-        private void UpdateList(IOrderedEnumerable<Product> list)
-        {
-            List<Product> newList = new List<Product>();
-
-            foreach (Product p in list)
-            {
-                newList.Add(p);
-            }
-
-            Product.ProductsList.Clear();
-
-            Product.ProductsList = newList;
+            Command.UpdateList(sortedByDate);
             outputBox.Text = Product.getInfo();
         }
 
-        private void сохранитьРезультатToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (Product.ProductsList.Count != 0)
-            {
-                DataSerialization.Serialize(Product.ProductsList.ToArray(), "sort.xml");
-                MessageBox.Show($"Успех. Кол-во товара: {Product.ProductsList.Count}", "Товар Сохранён");
-            }
-            else MessageBox.Show($"Товар не сохранён. Кол-во товара: {Product.ProductsList.Count}", "Ошибка");
-        }
-
+        private void сохранитьРезультатToolStripMenuItem_Click(object sender, EventArgs e) => Command.SaveSortResult();
         private void включитьПанельToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (toolStrip.Visible == true) toolStrip.Visible = false;

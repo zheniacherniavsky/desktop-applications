@@ -48,6 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractFactory.cs" />
+    <Compile Include="Adapter.cs" />
+    <Compile Include="Command.cs" />
+    <Compile Include="ConcreteObservable.cs" />
     <Compile Include="OrderBuilder.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
