@@ -1,0 +1,40 @@
+﻿<Window x:Class="AnimeShop_lab_6_7_.AddProduct"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AnimeShop_lab_6_7_"
+        mc:Ignorable="d"
+        Icon="pack://application:,,,/Resources/favicon.ico"
+        Title="EditProduct" Height="450" Width="400">
+    <Window.CommandBindings>
+        <CommandBinding 
+            Command="{x:Static local:AddProduct.AddNewProduct}" 
+            Executed="AddNewProduct_Executed"/>
+    </Window.CommandBindings>
+    <Grid>
+        <StackPanel Margin="30">
+            <TextBlock>
+                Путь к картинке:
+            </TextBlock>
+            <TextBox Width="300" HorizontalAlignment="Left" x:Name="ImagePath"/>
+            <TextBlock>
+                Название
+            </TextBlock>
+            <TextBox Width="300" HorizontalAlignment="Left" x:Name="ProductTitle"/>
+            <TextBlock>
+                Описание
+            </TextBlock>
+            <TextBox TextWrapping="Wrap" Width="300" Height="100" HorizontalAlignment="Left" x:Name="ProductDescription"/>
+            <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                <TextBlock>Цена</TextBlock>
+                <TextBox Width="30" Margin="5 0 0 0" x:Name="ProductPrice"/>
+                <TextBlock Margin="10 0 0 0">Категория</TextBlock>
+                <TextBox Width="70" Margin="5 0 0 0" x:Name="ProductCategory"/>
+                <TextBlock Margin="10 0 0 0">Рейтинг</TextBlock>
+                <TextBox Width="15" Margin="5 0 0 0" x:Name="ProductRating"/>
+            </StackPanel>
+            <Button Margin="0 10 0 0" Command="{x:Static local:AddProduct.AddNewProduct}" Style="{StaticResource Button}">Добавить</Button>
+        </StackPanel>
+    </Grid>
+</Window>

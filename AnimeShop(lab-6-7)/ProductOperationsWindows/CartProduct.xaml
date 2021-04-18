@@ -1,0 +1,45 @@
+﻿<Window x:Class="AnimeShop_lab_6_7_.CartProduct"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AnimeShop_lab_6_7_"
+        mc:Ignorable="d"
+        Icon="pack://application:,,,/Resources/favicon.ico"
+        Title="EditProduct" Height="700" Width="600" ResizeMode="NoResize">
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:CartProduct.RemoveFromCart}" Executed="RemoveFromCart_Executed"/>
+    </Window.CommandBindings>
+    <Grid>
+        <StackPanel>
+            <Image  Margin="30" Width="200" Height="200" x:Name="ProductImage"/>
+            <TextBlock
+                Width="500"
+                TextWrapping="Wrap" 
+                TextAlignment="Center" 
+                FontSize="16" 
+                FontWeight="Bold" 
+                x:Name="ProductTitle"
+                MaxHeight="30"/>
+            <TextBlock 
+                TextWrapping="Wrap" 
+                Width="500"
+                Margin="30" 
+                FontSize="14" 
+                x:Name="ProductDescription"
+                MaxHeight="110"/>
+                <StackPanel Margin="60 0">
+                <TextBlock>
+                    Цена: <TextBlock x:Name="ProductPrice"/> р.
+                </TextBlock>
+                <TextBlock>
+                    Категория: <TextBlock Width="300" x:Name="ProductCategory"/>
+                </TextBlock>
+                <TextBlock>
+                    Рейтинг: <TextBlock Width="15" TextAlignment="Center" x:Name="ProductRating"/>
+                </TextBlock>
+            </StackPanel>
+            <Button Margin="0 10 0 0" Command="{x:Static local:CartProduct.RemoveFromCart}" Style="{StaticResource Button}">Удалить из корзины</Button>
+        </StackPanel>
+    </Grid>
+</Window>

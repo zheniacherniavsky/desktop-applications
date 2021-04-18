@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 
-namespace lab6_7.Properties
+namespace AnimeShop_lab_6_7_.Properties
 {
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "11.0.0.0")]

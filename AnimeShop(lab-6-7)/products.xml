@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<ArrayOfProduct xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Product>
+    <Id>1</Id>
+    <ImagePath>/Images/0.jpg</ImagePath>
+    <Title>Кружка "Наруто. Саске" (Белая)</Title>
+    <Category>Кружки</Category>
+    <Price>20</Price>
+    <Description>Оригинальная кружка станет отличным подарком для поклонников аниме 'Наруто'. Правило ухода: не рекомендуется чистка абразивными материалами (металлические щётки и т.п.) и мытьё в посудомоечных машинах.</Description>
+    <Rating>5</Rating>
+  </Product>
+  <Product>
+    <Id>2</Id>
+    <ImagePath>/Images/1.jpg</ImagePath>
+    <Title>Бутылка для воды "Аниме. Жизнь с нуля" (600 мл)</Title>
+    <Category>Кружки</Category>
+    <Price>27</Price>
+    <Description>Бутылка из облегченной стали. В комплекте два вида крышки и карабин.</Description>
+    <Rating>3</Rating>
+  </Product>
+  <Product>
+    <Id>2</Id>
+    <ImagePath>/Images/2.jpg</ImagePath>
+    <Title>Коврик для мыши большой "Токийский гуль"</Title>
+    <Category>Коврики</Category>
+    <Price>18</Price>
+    <Description>Коврик для мыши имеет текстильное покрытие, обеспечивающее плавное перемещение манипулятора. Резиновая основа, препятствует проскальзыванию. Увеличенная площадь обеспечивает большую свободу действий и точность движений. Принт яркий, четкий, находится внутри тканевой основы, не осязаем на ощупь, не выстирывается и не выцветает.</Description>
+    <Rating>5</Rating>
+  </Product>
+</ArrayOfProduct>

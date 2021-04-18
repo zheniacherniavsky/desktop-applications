@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{501C3544-580B-47E5-A3B7-3AB81585998A}</ProjectGuid>
+    <ProjectGuid>{9EECC893-253D-4054-ADF4-4D43CC422929}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>lab6_7</RootNamespace>
-    <AssemblyName>lab6-7</AssemblyName>
+    <RootNamespace>AnimeShop_lab_6_7_</RootNamespace>
+    <AssemblyName>AnimeShop%28lab-6-7%29</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -55,7 +55,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Serialization.cs" />
+    <Compile Include="ProductOperationsWindows\CartProduct.xaml.cs">
+      <DependentUpon>CartProduct.xaml</DependentUpon>
+    </Compile>
+    <Page Include="ProductOperationsWindows\CartProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProductOperationsWindows\AddProduct.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ProductOperationsWindows\EditProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProductOperationsWindows\InfoProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -64,13 +82,26 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Item.cs" />
+    <Compile Include="ProductOperationsWindows\AddProduct.xaml.cs">
+      <DependentUpon>AddProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProductOperationsWindows\EditProduct.xaml.cs">
+      <DependentUpon>EditProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProductOperationsWindows\InfoProduct.xaml.cs">
+      <DependentUpon>InfoProduct.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Styles\menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -92,13 +123,27 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Resources\cursor1.ani" />
+    <Resource Include="Resources\cursor2.ani" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Resource Include="Images\lol.png" />
+    <Resource Include="Resources\favicon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\0.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="products.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\2.jpg" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
